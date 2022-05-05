@@ -1,0 +1,22 @@
+<div class="container">
+<br>
+<div class="card bg-dark shadow" style="border-radius: 10px">
+<div class="card-body">
+<p class="fs-2 text-center">Kayıt Ol</p>
+<br>
+	<form action="/account/register" method="post">
+    	<input name="username" class="form-control" placeholder="Kullanıcı Adı" required>
+        <br>
+      <input type="email" name="email" class="form-control" placeholder="E-mail" required>
+        <br>
+        <input type="password" name="password" class="form-control" placeholder="Parola" required>
+        <br>
+        <center>
+          <input value="Kayıt Ol" type="submit" class="btn btn-success">
+        </center>
+        <br>
+        <label class="form-label">Zaten bir hesaba sahip misin? <a class="link-warning" href="/account/login">Giriş Yap</a></label>
+    </form>
+    </div>
+    </div>
+</div>

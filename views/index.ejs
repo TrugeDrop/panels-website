@@ -1,0 +1,138 @@
+<!-- Styles -->
+<style>
+  #main {
+  padding: 5rem 0;
+  background-color: #CB6500;
+  color: #fff;
+  box-shadow: 0 4px 1rem -2px gray;
+}
+
+#main h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
+}
+
+#main a {
+  background-color: #029555;
+  border: none;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border-radius: 0.2rem;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 480px) {
+  #main h1 { font-size: 2.3rem; }
+}
+
+/* Why? */
+#why .row div {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  border: 0.1rem solid #CB6500 ;
+}
+
+@media screen and (max-width: 480px) {
+  #why .row div { margin: 0.2rem 2.5rem; width: 100%; }
+}
+
+/* Price */
+
+#price .card {
+  margin: 1rem 25%;
+  border: 0.1rem solid #1F3BFF;
+}
+
+@media screen and (max-width: 480px) {
+  #price .card {
+    margin: 0.5rem 12.5%;
+    width: 75%;
+  }
+}
+
+/* Discord */
+#dcserv {
+  padding: 3rem 0;
+  background-color: #CB6500;
+  color: #fff;
+}
+
+</style>
+
+  <div class="container-fluid" id="main">
+    <h1>TrugeDrop Panels</h1>
+    <center>
+      <a href="/account/register">Başlayalım</a>
+    </center>
+  </div>
+  
+  <div class="container mt-5 text-center">
+    <h1>TD Panels,</h1>
+    <p>NodeJS ile oluşturulmuş. Minecraft sunucu panelleridir. <a href="/info">Ayrıntılı Bilgi</a></p>
+  </div>
+  
+  <div class="container" id="why" style="margin-top: 6rem;">
+    <h1 class="text-center">Neden TD Panels?</h1>
+  <div class="row row-cols-3">
+    <div class="card card-body bg-dark col-md-3">
+      <h3><i class="bi bi-speedometer2"></i> Hızlı</h3>
+      <p>Panellerimiz hız konusunda oldukça yeterlidir.</p>
+    </div>
+    
+    <div class="card card-body bg-dark col-md-3">
+      <h3><i class="bi bi-emoji-smile"></i> Basit</h3>
+      <p>Panellerimizin basitliğini kullanıcılarımız için koruyoruz.</p>
+    </div>
+     
+    <div class="card card-body bg-dark col-md-3">
+      <h3><i class="bi bi-headset"></i> 7/24 Destek</h3>
+      <p>Bir sorun yaşadığınız da destek ekibimizle 7/24 iletişime geçebilirsiniz.</p>
+    </div>
+   </div>
+   <div class="row row-cols-3">
+     <div class="card card-body bg-dark col-md-3">
+       <h3><i class="bi bi-check2-circle"></i> Uyumlu</h3>
+       <p>Panellerimiz bütün işletim sistemleriyle sorunsuz çalışmaktadır.</p>
+     </div>
+     <div class="card card-body bg-dark col-md-3">
+       <h3><i class="bi bi-wallet2"></i> Uygun Fiyatlı</h3>
+       <p>Panellerimiz kullanıcılarımız için uygun fiyatlıdır.</p>
+     </div>
+   </div>
+  </div>
+  
+  <div class="container mb-5" id="price" style="margin-top: 6rem;">
+    <h1 class="text-center mb-3">Abonelik</h1>
+    
+    <div class="card card-body bg-dark col-6">
+      <h2 class="text-center mb-3">30₺/Ay</h2>
+      <p class="ms-4">
+        <a tabindex="0" data-bs-trigger="focus" class="text-decoration-none text-white" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Temel Özellikler: Konsol, Dosyalar ve Ayarlar"><i class="bi bi-check2-circle"></i> Temel özellikler <i class="bi bi-question-circle"></i></a> <br>
+        <i class="bi bi-check2-circle"></i> 7/24 Destek <br>
+        <i class="bi bi-check2-circle"></i> Oyuncu Yönetimi <br>
+        <i class="bi bi-check2-circle"></i> Eklenti Yönetimi
+      </p>
+      <a href="https://discord.gg/HTRsUZ9due" class="btn btn-outline-success">Satın Al</a>
+    </div>
+  </div>
+  
+  <div class="container-fluid mt-5" id="dcserv">
+    <center>
+    <h1><i class="bi bi-discord"></i> Discord Sunucumuz</h1>
+    <p class="mb-5">Panellerimizle ilgili gelişmeleri discord sunucumuzdan takip edebilirsiniz.</p>
+      <a href="https://discord.gg/HTRsUZ9due" class="btn btn-outline-light col-6">Discord Sunucumuza Katıl</a>
+    </center>
+  </div>
+  
+  <script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+    return new bootstrap.Popover(popoverTriggerEl)
+    })
+    
+    var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+    trigger: 'focus'
+    })
+  </script>

@@ -1,0 +1,48 @@
+<div class="container mb-3 mt-3">
+  <h2><%=pl.name%></h2><br>
+   
+  <div class="card bg-dark">
+    <div class="card-header">
+      <h3 class="d-inline">Sürümler</h3>
+    <button type="button" class="float-end btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">Ekle</button>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <%pl.versions.forEach(v => {%>
+          <li class="list-group-item">
+            <%=v.version%>
+           <a href="/admin/plugins/<%=pl._id%>/version/delete/<%=v.version%>" class="float-end btn btn-danger btn-sm">Sil</a>
+          </li>
+        <%})%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eklenti Ekle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/admin/plugins/<%=pl._id%>/version/add" method="POST">
+      <div class="modal-body">   
+        <div class="row">
+          <div class="col-6">
+            <input type="text" name="version" class="form-control mb-3" placeholder="Sürüm" required>
+          </div>
+          <div class="col-6">
+            <input type="text" name="url" class="form-control mb-3" placeholder="İndirme Linki" required>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+        <button type="submit" class="btn btn-primary">Ekle</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

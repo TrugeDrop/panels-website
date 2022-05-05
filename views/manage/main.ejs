@@ -1,0 +1,63 @@
+<!-- Styles -->
+<style>
+  #main {
+  padding: 3rem 0;
+  background-color: #CB6500;
+  color: #fff;
+  box-shadow: 0 4px 1rem -2px gray;
+}
+
+#main h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
+}
+
+#main a {
+  background-color: #029555;
+  border: none;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border-radius: 0.2rem;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 480px) {
+  #main h1 { font-size: 2.3rem; }
+}
+</style>
+
+  <div class="container-fluid" id="main">
+    <h1>TrugeDrop Panels</h1>
+    <center>
+      <p style="font-size: 1.5rem;">Aboneliği Yönet</p>
+    </center>
+  </div>
+  
+  <div class="container mt-5 mb-3">
+    <div class="card bg-dark">
+      <div class="card-header h2">En Son Sürümler</div>
+      <div class="card-body">
+        <ul class="list-group">
+          <%panels.forEach(p => {%>
+            <li class="list-group-item list-group-item-action">
+            <p style="font-size: 1.3rem;" class="d-inline"><%=p.version%></p>
+            <a href="/manage/download/<%=p._id%>" class="btn btn-primary btn-sm float-end">İndir</a>
+            </li>
+          <%})%>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="card mt-4 bg-dark">
+      <div class="card-header h2">Müşteri Kimliğin</div>
+      <div class="card-body">
+        <label class="form-label">Müşteri ID</label>
+        <input type="text" class="form-control" value="<%=user._id%>" readonly>
+        <br>
+        <label class="form-label">Müşteri Adı</label>
+        <input type="text" class="form-control" value="<%=user.username%>" readonly>
+      </div>
+    </div>
+  </div>

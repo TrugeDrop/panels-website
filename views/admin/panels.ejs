@@ -1,0 +1,49 @@
+<div class="container mt-3 mb-3">
+  <div class="card card-body bg-dark mb-4 d-block">
+  <button type="button" class="btn btn-primary d-inline" data-bs-toggle="modal" data-bs-target="#addModal">Ekle</button>
+  </div>
+  
+  
+    <ul class="list-group">
+      <%panels.forEach(p => {%>
+          <li class="list-group-item">
+              <p style="font-size: 1.3rem;" class="d-inline"><%=p.version%></p>
+            <a href="/manage/download/<%=p._id%>" class="btn btn-primary btn-sm float-end ms-1">İndir</a>
+            <a href="/admin/delete/<%=p._id%>" class="btn btn-danger btn-sm float-end">Sil</a>
+          </li>
+        <%})%>
+    </ul>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Panel Ekle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/admin/panels/add" method="POST" enctype="multipart/form-data">
+      <div class="modal-body">
+        <label class="form-label">Sürüm</label>
+        <input type="text" class="form-control" name="version">
+        <br>
+        <label class="form-label">Açıklama</label>
+        <input type="text" class="form-control" name="description">
+        <br>
+        <label class="form-label">Dosya</label>
+        <input type="file" class="form-control" name="file">
+        <br>
+        <div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" name="active" value="true" checked>
+  <label class="form-check-label">Aktif</label>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+        <button type="submit" class="btn btn-primary">Ekle</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
