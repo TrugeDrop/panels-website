@@ -1,0 +1,123 @@
+  #main {
+  padding: 5rem 0;
+  background-color: #CB6500;
+  color: #fff;
+  box-shadow: 0 4px 1rem -2px gray;
+}
+
+#main h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
+}
+
+#main a {
+  background-color: #029555;
+  border: none;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border-radius: 0.2rem;
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 480px) {
+  #main h1 { font-size: 2.3rem; }
+}
+
+/* Why? */
+#why .row div {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  border: 0.1rem solid #CB6500 ;
+}
+
+@media screen and (max-width: 480px) {
+  #why .row div { margin: 0.2rem 2.5rem; width: 100%; }
+}
+
+/* Price */
+
+#price .card {
+  margin: 1rem 25%;
+  border: 0.1rem solid #1F3BFF;
+}
+
+@media screen and (max-width: 480px) {
+  #price .card {
+    margin: 0.5rem 12.5%;
+    width: 75%;
+  }
+}
+
+/* Discord */
+#dcserv {
+  padding: 3rem 0;
+  background-color: #CB6500;
+  color: #fff;
+}
+
+/* Import Google Fonts */
+@import url("//fonts.googleapis.com/css2?family=Doppio+One:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+/* Navigation */
+nav{
+ box-shadow:0px 0px 20px 3px #4765ea;
+ background-color:#293bda !important;
+}
+
+/* Heading */
+#main h1{
+ transform:translatex(0px) translatey(0px);
+ font-family:'Doppio One', sans-serif;
+ letter-spacing:2.5px;
+ word-spacing:3.9px;
+ column-count:1;
+ font-weight:600;
+ white-space:nowrap;
+ box-shadow:none;
+ text-shadow:none;
+ direction:ltr;
+ filter: contrast(1.45) hue-rotate(267deg);
+}
+
+/* Link */
+#main center a{
+ display:inline-block;
+ width:353px;
+ height:67px;
+ opacity:1;
+ background-color:#185267;
+ backdrop-filter: brightness(1.68);
+ box-shadow:0px 0px 5px 6px #77de81;
+}
+
+/* Heading */
+#price .card-body h2{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Text center */
+#price h1.text-center{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Dcserv */
+#dcserv{
+ transform:translatex(0px) translatey(0px);
+ background-color:#293bda !important;
+}
+
+/* Column 3/12 */
+#why .card-body{
+ background-color:#262735 !important;
+}
+
+@media (min-width:481px){
+
+ /* Heading */
+ #main h1{
+  font-size:65px !important;
+ }
+ 
+}

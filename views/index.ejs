@@ -1,118 +1,58 @@
 <!-- Styles -->
-<style>
-  #main {
-  padding: 5rem 0;
-  background-color: #CB6500;
-  color: #fff;
-  box-shadow: 0 4px 1rem -2px gray;
-}
-
-#main h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 3.5rem;
-}
-
-#main a {
-  background-color: #029555;
-  border: none;
-  text-decoration: none;
-  padding: 1rem 3rem;
-  border-radius: 0.2rem;
-  color: #fff;
-  font-size: 1.3rem;
-}
-
-@media screen and (max-width: 480px) {
-  #main h1 { font-size: 2.3rem; }
-}
-
-/* Why? */
-#why .row div {
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
-  border: 0.1rem solid #CB6500 ;
-}
-
-@media screen and (max-width: 480px) {
-  #why .row div { margin: 0.2rem 2.5rem; width: 100%; }
-}
-
-/* Price */
-
-#price .card {
-  margin: 1rem 25%;
-  border: 0.1rem solid #1F3BFF;
-}
-
-@media screen and (max-width: 480px) {
-  #price .card {
-    margin: 0.5rem 12.5%;
-    width: 75%;
-  }
-}
-
-/* Discord */
-#dcserv {
-  padding: 3rem 0;
-  background-color: #CB6500;
-  color: #fff;
-}
-
-</style>
+<link rel="stylesheet" href="/css/index.css">
 
   <div class="container-fluid" id="main">
     <h1>TrugeDrop Panels</h1>
     <center>
-      <a href="/account/register">Başlayalım</a>
+      <a id="registerBtn" href="/account/register"></a>
     </center>
   </div>
   
-  <div class="container mt-5 text-center">
+  <div id="info" class="container mt-5 text-center">
     <h1>TD Panels,</h1>
-    <p>NodeJS ile oluşturulmuş. Minecraft sunucu panelleridir. <a href="/info">Ayrıntılı Bilgi</a></p>
+    <p></p>
   </div>
   
   <div class="container" id="why" style="margin-top: 6rem;">
-    <h1 class="text-center">Neden TD Panels?</h1>
+    <h1 class="text-center"></h1>
   <div class="row row-cols-3">
-    <div class="card card-body bg-dark col-md-3">
-      <h3><i class="bi bi-speedometer2"></i> Hızlı</h3>
-      <p>Panellerimiz hız konusunda oldukça yeterlidir.</p>
+    <div id="speed" class="card card-body bg-dark col-md-3">
+      <h3></h3>
+      <p></p>
     </div>
     
-    <div class="card card-body bg-dark col-md-3">
-      <h3><i class="bi bi-emoji-smile"></i> Basit</h3>
-      <p>Panellerimizin basitliğini kullanıcılarımız için koruyoruz.</p>
+    <div id="easy" class="card card-body bg-dark col-md-3">
+      <h3></h3>
+      <p></p>
     </div>
      
-    <div class="card card-body bg-dark col-md-3">
-      <h3><i class="bi bi-headset"></i> 7/24 Destek</h3>
-      <p>Bir sorun yaşadığınız da destek ekibimizle 7/24 iletişime geçebilirsiniz.</p>
+    <div id="support" class="card card-body bg-dark col-md-3">
+      <h3></h3>
+      <p></p>
     </div>
    </div>
    <div class="row row-cols-3">
-     <div class="card card-body bg-dark col-md-3">
-       <h3><i class="bi bi-check2-circle"></i> Uyumlu</h3>
-       <p>Panellerimiz bütün işletim sistemleriyle sorunsuz çalışmaktadır.</p>
+     <div id="easy_going" class="card card-body bg-dark col-md-3">
+       <h3></h3>
+       <p></p>
      </div>
-     <div class="card card-body bg-dark col-md-3">
-       <h3><i class="bi bi-wallet2"></i> Uygun Fiyatlı</h3>
-       <p>Panellerimiz kullanıcılarımız için uygun fiyatlıdır.</p>
+     <div id="reasonable_price" class="card card-body bg-dark col-md-3">
+       <h3></h3>
+       <p></p>
      </div>
    </div>
   </div>
   
   <div class="container mb-5" id="price" style="margin-top: 6rem;">
-    <h1 class="text-center mb-3">Abonelik</h1>
+    <h1 class="text-center mb-3"></h1>
     
     <div class="card card-body bg-dark col-6">
       <h2 class="text-center mb-3">30₺/Ay</h2>
       <p class="ms-4">
-        <a tabindex="0" data-bs-trigger="focus" class="text-decoration-none text-white" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Temel Özellikler: Konsol, Dosyalar ve Ayarlar"><i class="bi bi-check2-circle"></i> Temel özellikler <i class="bi bi-question-circle"></i></a> <br>
-        <i class="bi bi-check2-circle"></i> 7/24 Destek <br>
-        <i class="bi bi-check2-circle"></i> Oyuncu Yönetimi <br>
-        <i class="bi bi-check2-circle"></i> Eklenti Yönetimi
+        <a tabindex="0" data-bs-trigger="focus" class="text-decoration-none text-white" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Temel Özellikler: Konsol, Dosyalar ve Ayarlar"></a> <br>
+        <span id="support"></span> <br>
+        <span id="player_manage"></span> <br>
+        <span id="plugin_manage"></span>
       </p>
       <a href="https://discord.gg/HTRsUZ9due" class="btn btn-outline-success">Satın Al</a>
     </div>
@@ -120,13 +60,106 @@
   
   <div class="container-fluid mt-5" id="dcserv">
     <center>
-    <h1><i class="bi bi-discord"></i> Discord Sunucumuz</h1>
-    <p class="mb-5">Panellerimizle ilgili gelişmeleri discord sunucumuzdan takip edebilirsiniz.</p>
-      <a href="https://discord.gg/HTRsUZ9due" class="btn btn-outline-light col-6">Discord Sunucumuza Katıl</a>
+    <h1></h1>
+    <p class="mb-5"></p>
+    <a href="https://discord.gg/HTRsUZ9due" class="btn btn-outline-light col-6"></a>
     </center>
   </div>
   
   <script>
+    // Languages
+    const langs = {
+        registerBtn: {tr: '7 Günlük Ücretsiz Deneme', en: '7-Day Free Trial'},
+        info: {tr: 'NodeJS ile oluşturulmuş. Minecraft sunucu panelleridir. <a href="/info">Ayrıntılı Bilgi</a>', en: 'Built with NodeJS. Minecraft server panels. <a href="/info">Detailed Information</a>'},
+        why: {
+            h1: {
+                tr: 'Neden TD Panels?', 
+                en: 'Why TD Panels?'
+            }, 
+            speed: {
+                h3: {tr: '<i class="bi bi-speedometer2"></i> Hızlı', en: '<i class="bi bi-speedometer2"></i> Speed'},
+                p: {tr: 'Panellerimiz sizi havaya uçuracak kadar güçlüdür.', en: 'Our panels are strong enough to blow you away.'}
+            }, 
+            easy: {
+                h3: {tr: '<i class="bi bi-emoji-smile"></i> Basit', en: '<i class="bi bi-emoji-smile"></i> Easy'},
+                p: {tr: 'Panellerimizin basitliğini kullanıcılarımız için koruyoruz.', en: 'We maintain the simplicity of our panels for our users.'}
+            }, 
+            support: {
+                h3: {tr: '<i class="bi bi-headset"></i> 7/24 Destek', en: '<i class="bi bi-headset"></i> 24/7 Support'},
+                p: {tr: 'Bir sorun yaşadığınız da destek ekibimizle 7/24 iletişime geçebilirsiniz.', en: 'If you have a problem, you can contact our support team 24/7.'}
+            }, 
+            easy_going: {
+                h3: {tr: '<i class="bi bi-check2-circle"></i> Uyumlu', en: '<i class="bi bi-check2-circle"></i> Easy Going'},
+                p: {tr: 'Panellerimiz bütün işletim sistemleriyle sorunsuz çalışmaktadır.', en: 'Our panels work seamlessly with all operating systems.'}
+            }, 
+            reasonable_price: {
+                h3: {tr: '<i class="bi bi-wallet2"></i> Uygun Fiyatlı', en: '<i class="bi bi-wallet2"></i> Reasonable Price'},
+                p: {tr: 'Panellerimiz kullanıcılarımız için uygun fiyatlıdır.', en: 'Our panels are economical for our users.'}
+            }
+        },
+        price: {
+            h1: {tr: 'Abonelik', en: 'Subscription'},
+            p: {
+                a: {tr: '<i class="bi bi-check2-circle"></i> Temel özellikler <i class="bi bi-question-circle"></i>', en: '<i class="bi bi-check2-circle"></i> Key features <i class="bi bi-question-circle"></i>'},
+                support: {tr: '<i class="bi bi-check2-circle"></i> 7/24 Destek', en: '<i class="bi bi-check2-circle"></i> 24/7 Support'},
+                player_manage: {tr: '<i class="bi bi-check2-circle"></i> Oyuncu Yönetimi', en: '<i class="bi bi-check2-circle"></i> Player Manage'},
+                plugin_manage: {tr: '<i class="bi bi-check2-circle"></i> Eklenti Yönetimi', en: '<i class="bi bi-check2-circle"></i> Plugin Manage'}
+            }
+        },
+        dcserv: {
+            h1: {tr: '<i class="bi bi-discord"></i> Discord Sunucumuz', en: '<i class="bi bi-discord"></i> Discord Server'},
+            p: {tr: 'Panellerimizle ilgili gelişmeleri discord sunucumuzdan takip edebilirsiniz.', en: 'You can follow the developments about our panels on our discord server.'},
+            a: {tr: 'Discord Sunucumuza Katıl', en: 'Join Our Discord Server'}
+        }
+    };
+    
+    if(window.navigator.language.toLowerCase().indexOf('tr') != -1){
+        $('#registerBtn').html(langs.registerBtn.tr);
+        $('#info').html(langs.info.tr);
+        $('#why h1').html(langs.why.h1.tr);
+        $('#speed h3').html(langs.why.speed.h3.tr);
+        $('#speed p').html(langs.why.speed.p.tr);
+        $('#easy h3').html(langs.why.easy.h3.tr);
+        $('#easy p').html(langs.why.easy.p.tr);
+        $('#support h3').html(langs.why.support.h3.tr);
+        $('#support p').html(langs.why.support.p.tr);
+        $('#easy_going h3').html(langs.why.easy_going.h3.tr);
+        $('#easy_going p').html(langs.why.easy_going.p.tr);
+        $('#reasonable_price h3').html(langs.why.reasonable_price.h3.tr);
+        $('#reasonable_price p').html(langs.why.reasonable_price.p.tr);
+        $('#price h1').html(langs.price.h1.tr);
+        $('#price a').html(langs.price.p.a.tr);
+        $('#price div #support').html(langs.price.p.support.tr);
+        $('#price div #player_manage').html(langs.price.p.player_manage.tr);
+        $('#price div #plugin_manage').html(langs.price.p.plugin_manage.tr);
+        $('#dcserv center h1').html(langs.dcserv.h1.tr);
+        $('#dcserv center p').html(langs.dcserv.p.tr);
+        $('#dcserv center a').html(langs.dcserv.a.tr);
+    }else{
+        $('#registerBtn').html(langs.registerBtn.en);
+        $('#info').html(langs.info.en);
+        $('#why h1').html(langs.why.h1.en);
+        $('#speed h3').html(langs.why.speed.h3.en);
+        $('#speed p').html(langs.why.speed.p.en);
+        $('#easy h3').html(langs.why.easy.h3.en);
+        $('#easy p').html(langs.why.easy.p.en);
+        $('#support h3').html(langs.why.support.h3.en);
+        $('#support p').html(langs.why.support.p.en);
+        $('#easy_going h3').html(langs.why.easy_going.h3.en);
+        $('#easy_going p').html(langs.why.easy_going.p.en);
+        $('#reasonable_price h3').html(langs.why.reasonable_price.h3.en);
+        $('#reasonable_price p').html(langs.why.reasonable_price.p.en);
+        $('#price h1').html(langs.price.h1.en);
+        $('#price a').html(langs.price.p.a.en);
+        $('#price div #support').html(langs.price.p.support.en);
+        $('#price div #player_manage').html(langs.price.p.player_manage.en);
+        $('#price div #plugin_manage').html(langs.price.p.plugin_manage.en);
+        $('#dcserv center h1').html(langs.dcserv.h1.en);
+        $('#dcserv center p').html(langs.dcserv.p.en);
+        $('#dcserv center a').html(langs.dcserv.a.en);
+    }
+        
+    //Popover 
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)

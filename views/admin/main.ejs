@@ -1,4 +1,16 @@
 <div class="container mt-3 mb-3">
-  <a href="/admin/plugins" class="btn btn-primary">Eklentiler</a>
-  <a href="/admin/panels" class="btn btn-primary">Paneller</a>
+  <a href="/admin/plugins" id="plugins" class="btn btn-primary">Eklentiler</a>
+  <a href="/admin/panels" id="panels" class="btn btn-primary">Paneller</a>
 </div>
+
+<script>
+    const langs = {
+        plugins: {en: 'Plugins'},
+        panels: {en: 'Panels'}
+    };
+    
+    if(window.navigator.language.toLowerCase().indexOf('tr') == -1){
+        $('#plugins').html(langs.plugins.en);
+        $('#panels').html(langs.panels.en);
+    };
+</script>

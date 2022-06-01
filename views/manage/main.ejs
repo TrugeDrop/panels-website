@@ -30,26 +30,67 @@
 
   <div class="container-fluid" id="main">
     <h1>TrugeDrop Panels</h1>
-    <center>
-      <p style="font-size: 1.5rem;">Aboneliği Yönet</p>
-    </center>
+      <p class="text-center" style="font-size: 1.5rem;">Aboneliği Yönet</p>
   </div>
   
   <div class="container mt-5 mb-3">
-    <div class="card bg-dark">
+    <%if(user.subscription != "none"){%>
+    <div id="versions" class="card bg-dark">
       <div class="card-header h2">En Son Sürümler</div>
       <div class="card-body">
         <ul class="list-group">
           <%panels.forEach(p => {%>
             <li class="list-group-item list-group-item-action">
             <p style="font-size: 1.3rem;" class="d-inline"><%=p.version%></p>
-            <a href="/manage/download/<%=p._id%>" class="btn btn-primary btn-sm float-end">İndir</a>
+            <a href="/manage/download/<%=p._id%>" class="versionDownload btn btn-primary btn-sm float-end">İndir</a>
             </li>
           <%})%>
         </ul>
       </div>
     </div>
-    
+      <%}else{%>
+      <div class="alert alert-info subscribe">Bir aboneliğe sahip değilsin! <a href="https://discord.gg/p4PA7AUjPb" class="text-decoration-none">Abone Ol</a></div>
+      <%}%>
+      
+    <div id="active_sess" class="card mt-4 bg-dark">
+        <div class="card-header">
+            <h2 class="card-text d-inline">Aktif Oturumlar</h2>
+            <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#sessionAddModal">Oturum Ekle</button>
+        </div>
+        <div class="card-body">
+            <%if(cs.length > 0){%>
+            <div class="table-responsive">
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">IP</th>
+                            <th scope="col" id="del_time">Sona Erme Süresi</th>
+                            <th scope="col" id="creation_date">Oluşturulma Tarihi</th>
+                            <th scope="col" id="transactions">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(let i=0;i<cs.length;i++){%>
+                        <tr>
+                            <th scope="row"><%=i+1%></th>
+                            <td><%=cs[i].ip%></td>
+                            <td><%=(cs[i].del_time/24).toFixed(0)%> Saat</td>
+                            <td><%=cs[i].createdAt.toDateString()%></td>
+                            <td>
+                                <a href="/manage/delete-session/<%=cs[i]._id%>" class="btn btn-danger btn-sm">Sil</a>
+                            </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <%}else{%>
+                <div class="alert alert-warning">Aktif oturum yok!</div>
+            <%}%>
+        </div>
+    </div>
+      
     <div class="card mt-4 bg-dark">
       <div class="card-header h2">Müşteri Kimliğin</div>
       <div class="card-body">
@@ -61,3 +102,58 @@
       </div>
     </div>
   </div>
+
+<!-- Session Add Modal -->
+<div class="modal fade" id="sessionAddModal" tabindex="-1" aria-labelledby="sessionAddModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sessionAddModalLabel">Oturum Ekle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/posts/manage/add-session" method="POST">
+      <div class="modal-body">
+          <label class="form-label">IP Adres</label>
+          <input type="text" name="ip" class="form-control mb-3" required>
+          <label class="form-label">Sona Erme Süresi</label>
+          <select name="del_time" class="form-select">
+              <option value="1440">1 Gün</option>
+              <option value="10080" selected>1 Hafta</option>
+              <option value="43200">1 Ay</option>
+              <option value="129600">3 Ay</option>
+          </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+        <button type="submit" class="btn btn-primary">Ekle</button>
+      </div>
+     </form>
+    </div>
+  </div>
+</div>
+
+<script>
+    const langs = {
+        description: {en: 'Manage Subscription'},
+        versions_title: {en: 'Latest Versions'},
+        versions_download_btn: {en: 'Download'},
+        subscribe: {en: "You don't have a subscription! <a href='https://discord.gg/p4PA7AUjPb' class='text-decoration-none'>Subscribe</a>"},
+        active_sess_title: {en: 'Active Sessions'},
+        active_sess_add_btn: {en: 'Add Session'},
+        active_sess_table_del_time: {en: 'Expiration Time'},
+        active_sess_table_creation_date: {en: 'Creation Date'},
+        active_sess_table_transactions: {en: 'Transactions'}
+    };
+    
+    if(window.navigator.language.toLowerCase().indexOf('tr') == -1){
+        $('#main p').html(langs.description.en);
+        $('#versions .h2').html(langs.versions_title.en);
+        $('#versions .card-body ul li .versionDownload').html(langs.versions_download_btn.en);
+        $('.subscribe').html(langs.subscribe.en);
+        $('#active_sess .card-header h2').html(langs.active_sess_title.en);
+        $('#active_sess .card-header .btn').html(langs.active_sess_add_btn.en);
+        $('#del_time').html(langs.active_sess_table_del_time.en);
+        $('#creation_date').html(langs.active_sess_table_creation_date.en);
+        $('#transactions').html(langs.active_sess_table_transactions.en);
+    };
+</script>

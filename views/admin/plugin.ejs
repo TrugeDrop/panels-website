@@ -10,7 +10,8 @@
       <ul class="list-group">
         <%pl.versions.forEach(v => {%>
           <li class="list-group-item">
-            <%=v.version%>
+            <p style="font-size: 1.3rem; display: inline;"><%=v.version%></p>
+           <a href="/admin/plugins/<%=pl._id%>/version/download/<%=v.version%>" class="float-end btn btn-primary ms-1 btn-sm">İndir</a>
            <a href="/admin/plugins/<%=pl._id%>/version/delete/<%=v.version%>" class="float-end btn btn-danger btn-sm">Sil</a>
           </li>
         <%})%>
@@ -27,14 +28,14 @@
         <h5 class="modal-title" id="exampleModalLabel">Eklenti Ekle</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/admin/plugins/<%=pl._id%>/version/add" method="POST">
+      <form action="/admin/plugins/<%=pl._id%>/version/add" method="POST" enctype="multipart/form-data">
       <div class="modal-body">   
         <div class="row">
           <div class="col-6">
             <input type="text" name="version" class="form-control mb-3" placeholder="Sürüm" required>
           </div>
           <div class="col-6">
-            <input type="text" name="url" class="form-control mb-3" placeholder="İndirme Linki" required>
+            <input type="file" name="file" class="form-control mb-3" required>
           </div>
         </div>
       </div>

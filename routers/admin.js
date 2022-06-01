@@ -8,7 +8,16 @@ const path = require("path");
 function userCont(req, res, callback){
   if(!req.session.userId) return res.redirect("/account/login");
   User.findById(req.session.userId, function(err,user){
+    if(user.auth.indexOf("plugins") != -1 && user.auth.indexOf("admin") == -1) return res.redirect("/admin/plugins");
     if(user.auth.indexOf('admin') == -1) return res.send("Yetersiz yetki!");
+    return callback(user);
+  });
+};
+
+function userPluginCont(req, res, callback){
+  if(!req.session.userId) return res.redirect("/account/login");
+  User.findById(req.session.userId, function(err,user){
+    if(user.auth.indexOf('admin') == -1 && user.auth.indexOf('plugins') == -1) return res.send("Yetersiz yetki!");
     return callback(user);
   });
 };
@@ -32,12 +41,12 @@ router.post("/panels/add", function(req, res){
     let { version, description, active } = req.body;
     let file = req.files.file;
     
-    var panel = new Panel(req.body);
+  var panel = new Panel(req.body);
     
     panel.save(function(err){
       if(err) return res.send("Bir hata oluştu!"+err);
-      
-      file.mv(path.resolve(__dirname, "../panels/", file.name));
+      file.name = version+".exe";
+      file.mv(path.resolve(__dirname, "../../media/panels/", file.name));
       res.send("Başarılı!");
     });
   });
@@ -53,7 +62,7 @@ router.get("/delete/:id", (req,res) => {
 });
 
 router.get("/plugins", (req,res) => {
-  userCont(req, res, function(user){
+  userPluginCont(req, res, function(user){
     if(req.query.name){
       Plugin.findOne({name: req.query.name, active: true}, function(err,pl){
         if(!pl) return res.send("Eklenti bulunamadı!");
@@ -68,23 +77,27 @@ router.get("/plugins", (req,res) => {
 });
 
 router.post("/plugins/add", function(req,res){
-  userCont(req, res, function(user){
+  userPluginCont(req, res, function(user){
+    let file = req.files.file;
     const pl = new Plugin({
       name: req.body.name,
       description: req.body.description,
-      versions: {version: req.body.version, url: req.body.url},
+      page: req.body.page,
+      versions: {version: req.body.version, url: "media/plugins/"+req.body.name+"-"+req.body.version+".jar" },
       active: Boolean(req.body.active === "true")
     });
     
     pl.save(function(err){
       if(err) return res.send("Bir hata oluştu!");
+      
+      file.mv(path.resolve(__dirname, "../../media/plugins/", req.body.name+"-"+req.body.version+".jar"));
       res.send("Başarılı!");
     });
   });
 });
 
 router.get("/plugins/:id/version/delete/:version", (req,res) => {
-  userCont(req, res, function(user){
+  userPluginCont(req, res, function(user){
       Plugin.findById(req.params.id, function(err,pl){
         if(!pl) return res.send("Eklenti bulunamadı!");
         
@@ -102,15 +115,30 @@ router.get("/plugins/:id/version/delete/:version", (req,res) => {
 });
 
 router.post("/plugins/:id/version/add", (req,res) => {
-  userCont(req, res, function(user){
+  userPluginCont(req, res, function(user){
       Plugin.findById(req.params.id, function(err,pl){
         if(!pl) return res.send("Eklenti bulunamadı!");
+        let file = req.files.file;
         
-        pl.versions.push({version: req.body.version, url: req.body.url});
+        pl.versions.push({version: req.body.version, url: "media/plugins/"+pl.name+"-"+req.body.version+".jar"});
         
         pl.save();
         
+        file.mv(path.resolve(__dirname, "../../media/plugins/", pl.name+"-"+req.body.version+".jar"));
+        
         res.redirect("/admin/plugins?name="+pl.name);
+      });
+  });
+});
+
+router.get("/plugins/:id/version/download/:version", (req,res) => {
+  userPluginCont(req, res, function(user){
+      Plugin.findById(req.params.id, function(err,pl){
+        if(!pl) return res.send("Eklenti bulunamadı!");
+        
+        let result = pl.versions.findIndex(i => i.version == req.params.version);
+      
+        res.download("../"+pl.versions[result].url);
       });
   });
 });

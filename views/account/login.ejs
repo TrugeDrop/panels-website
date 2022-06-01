@@ -2,19 +2,37 @@
 <br>
 <div class="card bg-dark shadow" style="border-radius: 10px">
 <div class="card-body">
-<p class="fs-2 text-center">Giriş Yap</p>
+<p id="title" class="fs-2 text-center">Giriş Yap</p>
 <br>
 	<form action="/account/login" method="post">
-    	<input name="username" class="form-control" placeholder="Kullanıcı Adı" required>
+    	<input type="text" id="username" name="username" class="form-control" placeholder="Kullanıcı Adı" required>
         <br>
-        <input type="password" name="password" class="form-control" placeholder="Parola" required>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Parola" required>
         <br>
         <center>
-          <input value="Giriş Yap" type="submit" class="btn btn-success">
+          <input id="submitBtn" value="Giriş Yap" type="submit" class="btn btn-success">
         </center>
         <br>
-        <label class="form-label">Bir hesabaı ihtiyacın var? <a class="link-warning" href="/account/register">Kayıt Ol</a></label>
+        <label id="register" class="form-label">Bir hesaba mı ihtiyacın var? <a class="link-warning" href="/account/register">Kayıt Ol</a></label>
     </form>
     </div>
     </div>
 </div>
+
+<script>
+    const langs = {
+        title: {en: 'Login'},
+        username_placeholder: {en: 'Username'},
+        password_placeholder: {en: 'Password'},
+        submitBtn_value: {en: 'Login'},
+        register: {en: 'Do you need an account? <a class="link-warning" href="/account/register">Register</a>'}
+    };
+    
+    if(window.navigator.language.toLowerCase().indexOf('tr') == -1){
+        $('#title').html(langs.title.en);
+        $('#username').attr('placeholder', langs.username_placeholder.en);
+        $('#password').attr('placeholder', langs.password_placeholder.en);
+        $('#submitBtn').attr('value', langs.submitBtn_value.en);
+        $('#register').html(langs.register.en);
+    };
+</script>

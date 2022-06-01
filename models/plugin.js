@@ -8,7 +8,12 @@ const schema = new mongoose.Schema({
   description: {
     type: String,
     required: true
-  }, 
+  },
+  page: {
+    type: String,
+    required: true,
+    unique: true
+  },
   versions: {
     type: Array,
     required: true
